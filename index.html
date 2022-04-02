@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html, body {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      #normal-video, #repeat-video {
+        width: 100vw;
+        height: 100vh;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="normal-video" autoplay muted>
+      <source src="일반 영상.webm" type="video/webm">
+    </video>
+    <video id="repeat-video" autoplay loop muted>
+      <source src="반복 영상.webm" type="video/webm">
+    </video>
+
+    <!-- 1. 두개 영상을 번갈아 보여준다 -->
+    <!-- <script type="text/javascript">
+      let normal = document.getElementById("normal-video");
+      let repeat = document.getElementById("repeat-video");
+
+      normal.play();
+      normal.style.display = "block";
+      repeat.style.display = "none";
+
+      setTimeout(function (){
+        normal.style.display = "none";
+        normal.pause();
+
+        repeat.style.display = "block";
+        repeat.play();
+      }, 10000);
+    </script> -->
+
+    <!-- 2. 영상이 끝나면 소스를 변경한다. -->
+    <!-- <script type="text/javascript">
+      let normal = document.getElementById("normal-video");
+
+      normal.style.display = "block";
+      normal.play();
+      normal.onended = function() {
+        normal.src = "반복 영상.webm";
+        normal.loop = true;
+        normal.onended = null;
+      }
+    </script> -->
+
+    <!-- 3. 영상이 끝나면 오브젝트를 교체한다. -->
+    <script type="text/javascript">
+      let normal = document.getElementById("normal-video");
+      let repeat = document.getElementById("repeat-video");
+
+      normal.style.display = "block";
+      normal.play();
+      normal.onended = function() {
+        normal.style.display = "none";
+        normal.pause();
+
+        repeat.style.display = "block";
+        repeat.play();
+      }
+    </script>
+  </body>
+</html>
